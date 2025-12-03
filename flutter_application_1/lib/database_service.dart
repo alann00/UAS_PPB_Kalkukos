@@ -18,7 +18,7 @@ class DatabaseService {
       port: 3306,
       user: 'root',
       password: '',
-      db: 'db_kalkukosan',
+      db: 'db_kos',
     );
 
     _conn = await MySqlConnection.connect(settings);

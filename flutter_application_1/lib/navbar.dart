@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 // Import halaman utama
 import 'pengeluaran.dart';
 import 'tagihan.dart';
-import 'pengingat.dart';
 import 'riwayat.dart';
 import 'total_bulanan.dart';
 
@@ -21,7 +20,6 @@ class _NavbarState extends State<Navbar> {
   final List<Widget> pages = [
     PengeluaranPage(),
     TagihanPage(),
-    PengingatPage(),
     RiwayatPage(),
     TotalBulananPage(),
   ];
@@ -35,14 +33,12 @@ class _NavbarState extends State<Navbar> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
         onTap: (i) => setState(() => index = i),
-
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
         selectedItemColor: Colors.deepPurple,
         unselectedItemColor: Colors.grey.shade400,
         showUnselectedLabels: true,
         iconSize: 26,
-
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.wallet_rounded),
@@ -51,10 +47,6 @@ class _NavbarState extends State<Navbar> {
           BottomNavigationBarItem(
             icon: Icon(Icons.receipt_long_rounded),
             label: "Tagihan",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_active_rounded),
-            label: "Reminder",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.history_rounded),
