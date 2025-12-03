@@ -12,7 +12,7 @@ class KalkuKosan extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "KalkuKosan",
+      title: "KalkuKosantun",
       theme: ThemeData(
         colorScheme: ColorScheme.light(
           primary: const Color.fromARGB(186, 104, 58, 183),          // warna utama ungu elegan

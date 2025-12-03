@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+<<<<<<< HEAD
 import 'package:flutter/services.dart';
+=======
+>>>>>>> 96fe26ca4a33d28284d4a10260f1dc7590f1e306
 
 class PengeluaranPage extends StatefulWidget {
   const PengeluaranPage({super.key});
@@ -14,7 +17,11 @@ class _PengeluaranPageState extends State<PengeluaranPage> {
   List pengeluaran = [];
   bool isLoading = true;
 
+<<<<<<< HEAD
   final String apiBase = "http://192.168.18.48/flutter_uas_kalkukos";
+=======
+  final String apiBase = "http://192.168.1.51/flutter_uas_kalkukos";
+>>>>>>> 96fe26ca4a33d28284d4a10260f1dc7590f1e306
 
   @override
   void initState() {
@@ -74,7 +81,11 @@ class _PengeluaranPageState extends State<PengeluaranPage> {
   }
 
   // =====================================================
+<<<<<<< HEAD
   // ADD DATA
+=======
+  // ADD DATA — mengikuti style teman kamu
+>>>>>>> 96fe26ca4a33d28284d4a10260f1dc7590f1e306
   // =====================================================
   Future<void> addPengeluaran() async {
     TextEditingController namaC = TextEditingController();
@@ -137,7 +148,12 @@ class _PengeluaranPageState extends State<PengeluaranPage> {
                   kategoriC.text.isEmpty ||
                   pickedDate == null) {
                 ScaffoldMessenger.of(context).showSnackBar(
+<<<<<<< HEAD
                   const SnackBar(content: Text("Semua field wajib diisi")),
+=======
+                  const SnackBar(
+                      content: Text("Semua field wajib diisi")),
+>>>>>>> 96fe26ca4a33d28284d4a10260f1dc7590f1e306
                 );
                 return;
               }
@@ -148,13 +164,23 @@ class _PengeluaranPageState extends State<PengeluaranPage> {
                   "nama_pengeluaran": namaC.text,
                   "jumlah_biaya": jumlahC.text,
                   "kategori": kategoriC.text,
+<<<<<<< HEAD
                   "tanggal_transaksi": pickedDate!.toString().substring(0, 10),
+=======
+                  "tanggal_transaksi":
+                      pickedDate!.toString().substring(0, 10),
+>>>>>>> 96fe26ca4a33d28284d4a10260f1dc7590f1e306
                 },
               );
 
               Navigator.pop(context, "refresh");
             },
+<<<<<<< HEAD
             child: const Text("Simpan", style: TextStyle(color: Colors.white)),
+=======
+            child:
+                const Text("Simpan", style: TextStyle(color: Colors.white)),
+>>>>>>> 96fe26ca4a33d28284d4a10260f1dc7590f1e306
           )
         ],
       ),
@@ -164,7 +190,11 @@ class _PengeluaranPageState extends State<PengeluaranPage> {
   }
 
   // =====================================================
+<<<<<<< HEAD
   // TextField Form (dengan digitsOnly)
+=======
+  // TextField style seperti teman kamu
+>>>>>>> 96fe26ca4a33d28284d4a10260f1dc7590f1e306
   // =====================================================
   Widget inputForm(TextEditingController c, String label,
       {bool number = false}) {
@@ -198,6 +228,10 @@ class _PengeluaranPageState extends State<PengeluaranPage> {
         onPressed: addPengeluaran,
         child: const Icon(Icons.add),
       ),
+<<<<<<< HEAD
+=======
+
+>>>>>>> 96fe26ca4a33d28284d4a10260f1dc7590f1e306
       body: isLoading
           ? const Center(
               child: CircularProgressIndicator(color: Colors.deepPurple),
@@ -239,18 +273,33 @@ class _PengeluaranPageState extends State<PengeluaranPage> {
                               Text(
                                 x["nama_pengeluaran"],
                                 style: const TextStyle(
+<<<<<<< HEAD
                                     fontWeight: FontWeight.bold, fontSize: 16),
+=======
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16),
+>>>>>>> 96fe26ca4a33d28284d4a10260f1dc7590f1e306
                               ),
                               Text(
                                 x["kategori"],
                                 style: TextStyle(
+<<<<<<< HEAD
                                     fontSize: 13, color: Colors.grey.shade600),
+=======
+                                    fontSize: 13,
+                                    color: Colors.grey.shade600),
+>>>>>>> 96fe26ca4a33d28284d4a10260f1dc7590f1e306
                               ),
                               const SizedBox(height: 4),
                               Text(
                                 x["tanggal_transaksi"],
                                 style: TextStyle(
+<<<<<<< HEAD
                                     fontSize: 12, color: Colors.grey.shade500),
+=======
+                                    fontSize: 12,
+                                    color: Colors.grey.shade500),
+>>>>>>> 96fe26ca4a33d28284d4a10260f1dc7590f1e306
                               ),
                             ],
                           ),
@@ -267,8 +316,13 @@ class _PengeluaranPageState extends State<PengeluaranPage> {
                                 ),
                               ),
                               IconButton(
+<<<<<<< HEAD
                                 icon:
                                     const Icon(Icons.delete, color: Colors.red),
+=======
+                                icon: const Icon(Icons.delete,
+                                    color: Colors.red),
+>>>>>>> 96fe26ca4a33d28284d4a10260f1dc7590f1e306
                                 onPressed: () => deletePengeluaran(
                                   x["id"].toString(),
                                   x["nama_pengeluaran"],
