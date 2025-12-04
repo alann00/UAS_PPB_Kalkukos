@@ -9,6 +9,7 @@
       "dependencies": [
         "cupertino_icons",
         "flutter",
+        "flutter_lints",
         "http",
         "intl",
         "mysql1"
@@ -33,6 +34,13 @@
         "stream_channel",
         "test_api",
         "vector_math"
+      ]
+    },
+    {
+      "name": "flutter_lints",
+      "version": "6.0.0",
+      "dependencies": [
+        "lints"
       ]
     },
     {
@@ -164,6 +172,11 @@
         "string_scanner",
         "term_glyph"
       ]
+    },
+    {
+      "name": "lints",
+      "version": "6.0.0",
+      "dependencies": []
     },
     {
       "name": "web",

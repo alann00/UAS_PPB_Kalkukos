@@ -24,7 +24,7 @@ class _TotalBulananPageState extends State<TotalBulananPage> {
   Future<void> loadData() async {
     try {
       final url = Uri.parse(
-          "http://192.168.18.48/flutter_uas_kalkukos/total_bulanan.php");
+          "http://10.50.216.245/flutter_uas_kalkukos/total_bulanan.php");
 
       final res = await http.get(url);
 
@@ -51,13 +51,13 @@ class _TotalBulananPageState extends State<TotalBulananPage> {
     }
   }
 
- @override
-void initState() {
-  super.initState();
-  initializeDateFormatting('id_ID', null).then((_) {
-    loadData();
-  });
-}
+  @override
+  void initState() {
+    super.initState();
+    initializeDateFormatting('id_ID', null).then((_) {
+      loadData();
+    });
+  }
 
   Widget cardItem({
     required String title,
@@ -122,8 +122,12 @@ void initState() {
     return Scaffold(
       backgroundColor: const Color(0xffF5F6FA),
       appBar: AppBar(
-        title: const Text("Total Bulanan"),
+        title: const Text(
+          "Total Bulanan",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.deepPurple,
+        centerTitle: true, // ⬅️ agar judul ke tengah
         elevation: 0,
       ),
       body: loading

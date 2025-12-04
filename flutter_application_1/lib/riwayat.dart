@@ -11,12 +11,11 @@ class RiwayatPage extends StatefulWidget {
 
 class _RiwayatPageState extends State<RiwayatPage> {
   List pengeluaran = [];
-  List pengeluaranAsli = []; // <- untuk menyimpan semua data
+  List pengeluaranAsli = []; // untuk semua data
   bool loading = true;
 
-  final String apiBase = "http://192.168.18.48/flutter_uas_kalkukos";
+  final String apiBase = "http://10.50.216.245/flutter_uas_kalkukos";
 
-  // daftar bulan
   List<String> bulanList = [
     "Semua",
     "Januari",
@@ -41,9 +40,6 @@ class _RiwayatPageState extends State<RiwayatPage> {
     loadRiwayat();
   }
 
-  // ============================
-  // GET DATA
-  // ============================
   Future<void> loadRiwayat() async {
     setState(() => loading = true);
 
@@ -68,20 +64,15 @@ class _RiwayatPageState extends State<RiwayatPage> {
     }
   }
 
-  // ============================
-  // FILTER BULAN
-  // ============================
   void filterByBulan(String bulanNama) {
     if (bulanNama == "Semua") {
       setState(() => pengeluaran = pengeluaranAsli);
       return;
     }
 
-    // dapatkan index bulan dari daftar (index 1 = Januari karena index 0 = "Semua")
     final idx = bulanList.indexOf(bulanNama);
-    if (idx <= 0) return; // safety
+    if (idx <= 0) return;
 
-    // ubah ke format "MM"
     final kode = idx.toString().padLeft(2, '0');
 
     List filtered = pengeluaranAsli.where((x) {
@@ -101,18 +92,20 @@ class _RiwayatPageState extends State<RiwayatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Riwayat Pengeluaran"),
+        title: const Text(
+          "Riwayat Pengeluaran",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.deepPurple,
+        centerTitle: true, // ⬅️ judul ke tengah
       ),
+
       body: loading
           ? const Center(
               child: CircularProgressIndicator(color: Colors.deepPurple),
             )
           : Column(
               children: [
-                // =============================
-                // DROPDOWN FILTER BULAN
-                // =============================
                 Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -141,9 +134,6 @@ class _RiwayatPageState extends State<RiwayatPage> {
 
                 const SizedBox(height: 10),
 
-                // =============================
-                // LIST RIWAYAT
-                // =============================
                 Expanded(
                   child: pengeluaran.isEmpty
                       ? const Center(

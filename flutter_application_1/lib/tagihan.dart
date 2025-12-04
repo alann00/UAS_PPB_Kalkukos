@@ -1,4 +1,3 @@
-// lib/tagihan.dart
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -42,7 +41,7 @@ class _TagihanPageState extends State<TagihanPage> {
   final currency =
       NumberFormat.currency(locale: 'id_ID', symbol: 'Rp ', decimalDigits: 0);
 
-  final String baseUrl = "http://192.168.18.48/flutter_uas_kalkukos";
+  final String baseUrl = "http://10.50.216.245/flutter_uas_kalkukos";
   List<Tagihan> list = [];
   bool loading = true;
 
@@ -174,7 +173,7 @@ class _TagihanPageState extends State<TagihanPage> {
   }
 
   // --------------------------------------------------------------------------
-  //  FORM TENGAH LAYAR — versi terbaru (AlertDialog)
+  //  FORM TENGAH LAYAR
   // --------------------------------------------------------------------------
   void openAddModal() {
     final namaC = TextEditingController();
@@ -204,7 +203,7 @@ class _TagihanPageState extends State<TagihanPage> {
                     controller: jumlahC,
                     keyboardType: TextInputType.number,
                     inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly, // hanya angka
+                      FilteringTextInputFormatter.digitsOnly,
                     ],
                     decoration: const InputDecoration(labelText: "Nominal (Rp)"),
                   ),
@@ -365,7 +364,9 @@ class _TagihanPageState extends State<TagihanPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Daftar Tagihan"),
+        centerTitle: true, // ⬅ JUDUL TENGAH
         backgroundColor: Colors.deepPurple,
+        titleTextStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 20, color: Colors.white),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: openAddModal,
@@ -413,15 +414,14 @@ class _TagihanPageState extends State<TagihanPage> {
                             if (badge == "Lunas") chipLabel = "Lunas";
 
                             badgeChip = Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 8.0, right: 4.0),
+                              padding: const EdgeInsets.only(left: 8.0, right: 4.0),
                               child: Chip(
                                 backgroundColor: accentColor,
-                                label: Text(chipLabel,
-                                    style: const TextStyle(
-                                        color: Colors.white, fontSize: 12)),
-                                materialTapTargetSize:
-                                    MaterialTapTargetSize.shrinkWrap,
+                                label: Text(
+                                  chipLabel,
+                                  style: const TextStyle(color: Colors.white, fontSize: 12),
+                                ),
+                                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                                 visualDensity: VisualDensity.compact,
                               ),
                             );
@@ -430,8 +430,7 @@ class _TagihanPageState extends State<TagihanPage> {
                           }
 
                           return Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12)),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                             margin: const EdgeInsets.only(bottom: 12),
                             child: Padding(
                               padding: const EdgeInsets.all(12),
@@ -440,55 +439,46 @@ class _TagihanPageState extends State<TagihanPage> {
                                 children: [
                                   Row(
                                     children: [
-                                      Icon(Icons.receipt_long,
-                                          color: accentColor),
+                                      Icon(Icons.receipt_long, color: accentColor),
                                       const SizedBox(width: 12),
                                       Expanded(
                                         child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(t.nama,
                                                 style: const TextStyle(
                                                     fontSize: 16,
-                                                    fontWeight:
-                                                        FontWeight.bold)),
+                                                    fontWeight: FontWeight.bold)),
                                             Text(currency.format(t.jumlah),
-                                                style: TextStyle(
-                                                    color: accentColor)),
-                                            Text(DateFormat('dd MMM yyyy')
-                                                .format(t.tanggal)),
+                                                style: TextStyle(color: accentColor)),
+                                            Text(DateFormat('dd MMM yyyy').format(t.tanggal)),
                                           ],
                                         ),
                                       ),
                                       badgeChip,
                                       IconButton(
-                                        icon: const Icon(Icons.delete,
-                                            color: Colors.red),
+                                        icon: const Icon(Icons.delete, color: Colors.red),
                                         onPressed: () => deleteTagihan(t.id),
                                       )
                                     ],
                                   ),
                                   const Divider(height: 20),
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Expanded(
                                         child: Text(
-                                            t.status == 1
-                                                ? "Lunas"
-                                                : "Belum Lunas",
-                                            style: TextStyle(
-                                                color: t.status == 1
-                                                    ? Colors.green
-                                                    : Colors.orange,
-                                                fontWeight: FontWeight.bold)),
+                                          t.status == 1 ? "Lunas" : "Belum Lunas",
+                                          style: TextStyle(
+                                              color: t.status == 1
+                                                  ? Colors.green
+                                                  : Colors.orange,
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ),
                                       if (badge.isNotEmpty)
                                         Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 8.0),
+                                          padding: const EdgeInsets.only(right: 8.0),
                                           child: Text(
                                             badge,
                                             style: TextStyle(
@@ -498,8 +488,7 @@ class _TagihanPageState extends State<TagihanPage> {
                                         ),
                                       Switch(
                                         value: t.status == 1,
-                                        onChanged: (v) =>
-                                            updateStatus(t.id, v ? 1 : 0),
+                                        onChanged: (v) => updateStatus(t.id, v ? 1 : 0),
                                       ),
                                     ],
                                   )
